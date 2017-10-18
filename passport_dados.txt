@@ -1,0 +1,17 @@
+C:\Users\user\Documents\projetos_reais\pjt-gestor-kit
+λ php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: GFV83LuFV3Tm03eOaGNKzM7SNoyc2Azm6NzgAjPi
+Password grant client created successfully.
+Client ID: 2
+Client Secret: o3O8bbCegaKkg8W78nDgy1fdp5pvQMCQe3r24IAM
+
+
+
+Client ID: 3
+Client Secret: R85ZefXyfBpOEjk8ueYLGxPsfrURNEm1lfKJfFN8
+Password grant client created successfully.
+Client ID: 4
+Client Secret: lIvQbCACACZiHwAd4auFcWBiABLw6NTXWoknfcey
