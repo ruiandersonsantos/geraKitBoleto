@@ -44,12 +44,12 @@ class UserController extends Controller
         $usuario = $request->all();
 
         if($this->existUsuario($usuario['email'])){
-            return response()->json(['error' => 'E-mail já existente'],401);
+            return response()->json(['error' => 'E-mail já existente'],403);
         }
 
         // pegando o usuario logado
         $usuariologado = $request->user();
-        
+
         // passando a cia_secret do usuario que está efetuando o cadastro para o novo usuario
         $usuario['cia_secret'] = $usuariologado->cia_secret;
 
