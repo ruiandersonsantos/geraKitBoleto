@@ -116,7 +116,7 @@ class UserController extends Controller
         $result = \App\Model\User::where('email','=',$email)->get();
 
 
-        dd($result);
+        dd(emptyArray($result));
         return isset($result['email']);
     }
 
