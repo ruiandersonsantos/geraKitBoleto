@@ -41,11 +41,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // pegando o usuario logado
-        $usuariologado = $request->user();
+
 
         $usuario = $request->all();
 
+        if($this.$this->existUsuario($usuario->email)){
+            return response()->json(['error' => 'E-mail já existnte'],401);
+        }
+
+        // pegando o usuario logado
+        $usuariologado = $request->user();
         // passando a cia_secret do usuario que está efetuando o cadastro para o novo usuario
         $usuario['cia_secret'] = $usuariologado->cia_secret;
 
@@ -105,6 +110,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         return ['error' => 'operação de exclusao não é permitida'];
+    }
+
+
+    private function existUsuario($email){
+        $result = \App\Model\User::where('email','=',$email)->get();
+
+        return isset($result);
     }
 
 }
