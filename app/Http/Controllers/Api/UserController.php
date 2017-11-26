@@ -49,6 +49,7 @@ class UserController extends Controller
 
         // pegando o usuario logado
         $usuariologado = $request->user();
+        
         // passando a cia_secret do usuario que está efetuando o cadastro para o novo usuario
         $usuario['cia_secret'] = $usuariologado->cia_secret;
 
@@ -113,7 +114,7 @@ class UserController extends Controller
 
     private function existUsuario($email){
         $result = \App\Model\User::where('email','=',$email)->get();
-        dd($result);
+
         return isset($result);
     }
 
