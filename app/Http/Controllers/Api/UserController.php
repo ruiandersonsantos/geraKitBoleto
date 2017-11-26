@@ -46,7 +46,7 @@ class UserController extends Controller
         $usuario = $request->all();
 
         if($this->existUsuario($usuario->email)){
-            return response()->json(['error' => 'E-mail já existnte'],401);
+            return response()->json(['error' => 'E-mail já existente'],401);
         }
 
         // pegando o usuario logado
