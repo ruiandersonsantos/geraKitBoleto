@@ -116,7 +116,7 @@ class UserController extends Controller
         $result = \App\Model\User::where('email','=',$email)->get();
 
 
-        dd(array_key_exists ("User",$result->all()));
+        dd(array_keys($result->all()));
         return isset($result['email']);
     }
 
