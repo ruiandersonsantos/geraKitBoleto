@@ -15,6 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        // pegando o usuario logado
         $usuariologado = $request->user();
 
         $result = \App\Model\User::where('cia_secret','=',$usuariologado->cia_secret)->get();
@@ -40,7 +41,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // pegando o usuario logado
+        $usuariologado = $request->user();
+
         $usuario = $request->all();
+
+        // passando a cia_secret do usuario que está efetuando o cadastro para o novo usuario
+        $usuario['cia_secret'] = $usuariologado->cia_secret;
 
         $result = \App\Model\User::create($usuario);
 
