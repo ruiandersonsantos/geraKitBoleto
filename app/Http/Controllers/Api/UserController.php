@@ -41,8 +41,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $usuario = $request->all();
 
         if($this->existUsuario($usuario->email)){
@@ -114,7 +112,7 @@ class UserController extends Controller
 
 
     private function existUsuario($email){
-        $result = \App\Model\User::where('email','=',$email)->get();
+        $result = \App\Model\User::where('email','=',$email);
 
         return isset($result);
     }
