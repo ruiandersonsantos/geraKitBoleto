@@ -115,7 +115,7 @@ class UserController extends Controller
     private function existUsuario($email){
         $result = \App\Model\User::where('email','=',$email)->get();
 
-        return isset($result);
+        return isset($result['email']);
     }
 
 }
