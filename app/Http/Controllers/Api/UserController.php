@@ -116,7 +116,7 @@ class UserController extends Controller
         $result = \App\Model\User::where('email','=',$email)->get();
 
         $usr = response()->json($result);
-        dd($usr['data']);
+        dd(isset($usr));
         return isset($result['email']);
     }
 
