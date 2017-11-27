@@ -108,7 +108,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        return ['error' => 'operação de exclusao não é permitida'];
+        // Fazendo exclusão logica - inativação
+        $result = \App\Model\User::find($id);
+        $result->status = 0;
+        $result->save();
+        return response()->json($result);
     }
 
 
