@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Notifications\UserCreated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -54,7 +55,7 @@ class UserController extends Controller
         $usuario['cia_secret'] = $usuariologado->cia_secret;
 
         $result = \App\Model\User::create($usuario);
-
+        $result->notify(new UserCreated());
         return response()->json($result);
     }
 

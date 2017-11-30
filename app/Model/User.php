@@ -14,8 +14,9 @@ class User extends Authenticatable
     const NIVEL_ADMIN = 2;
     const NIVEL_COMUM = 3;
 
+    const STATUS_INATIVO = 0;
     const STATUS_ATIVO = 1;
-    const STATUS_INATIVO = 2;
+
 
     /**
      * The attributes that are mass assignable.
