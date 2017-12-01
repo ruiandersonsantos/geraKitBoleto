@@ -39,11 +39,13 @@ class UserCreated extends Notification
      */
     public function toMail($notifiable)
     {
-       // $appName = config('app.name');
+        $appName = config('app.name');
         return (new MailMessage)
-                    ->subject("Sua conta no sistema!")
-                    ->greeting("Ola , seja bem vindo ao sistema.")
-                    ->line("Sua senha deve ser trocada no seu primeiro login.");
+                    ->subject("Sua conta no $appName foi criada!")
+                    ->greeting("Olá {$notifiable->name}, seja bem vindo ao $appName")
+                    ->line("voce acabe de receber uma senha provisória, senha: SECRET123")
+                    ->line("Sua senha deve ser trocada no seu primeiro login.")
+                    ->salutation("atenciosamente,");
     }
 
 
