@@ -60,6 +60,7 @@ class UserController extends Controller
         $result = \App\Model\User::create($usuario);
         Mail::to($result['email'])->send(new UserEmail($result));
 
+        // retorno da API
         return response()->json($result);
     }
 
