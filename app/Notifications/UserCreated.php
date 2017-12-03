@@ -39,6 +39,7 @@ class UserCreated extends Notification
      */
     public function toMail($notifiable)
     {
+        // Configurando email
         $appName = config('app.name');
         return (new MailMessage)
                     ->subject("Sua conta no $appName foi criada!")
