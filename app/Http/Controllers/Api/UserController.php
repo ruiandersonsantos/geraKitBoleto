@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Notifications\UserCreated;
+use App\Mail\UserEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,7 +46,7 @@ class UserController extends Controller
         $usuario = $request->all();
 
         if($this->existUsuario($usuario['email'])){
-            return response()->json(['error' => 'E-mail já existente'],403);
+           return response()->json(['error' => 'E-mail já existente'],403);
         }
 
         // pegando o usuario logado
@@ -54,8 +55,11 @@ class UserController extends Controller
         // passando a cia_secret do usuario que está efetuando o cadastro para o novo usuario
         $usuario['cia_secret'] = $usuariologado->cia_secret;
 
+        $usuario['password'] = bcrypt('secret_mudar');
+
         $result = \App\Model\User::create($usuario);
-        $result->notify(new UserCreated());
+        Mail::to($result['email'])->send(new UserEmail($result));
+
         return response()->json($result);
     }
 
