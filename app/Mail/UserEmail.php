@@ -30,6 +30,7 @@ class UserEmail extends Mailable
      */
     public function build()
     {
+        // retorno do email
         return $this->from('contato@dtconsultoria.com.br', config('app.name'))
                     ->subject("Cadastro de Usuario")
                     ->view('emailUsuario',compact('dados',$this->dados));
