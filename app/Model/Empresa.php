@@ -18,18 +18,23 @@ class Empresa extends Model
         'endereco',
         'telefone',
         'email',
-        'key_secret'
+        'user_id',
+        'user_id_alter',
+        'empresa_id',
+        'tela_id',
+        'origem_id',
+        'origem_tela_id'
     ];
 
 
-    // metodo para gerar a chave secreta da empresa
-    public static function getKeySecret($cnpj,$email){
-        $key_secret = $cnpj . '-' . base64_encode($email);
 
-        return $key_secret;
-    }
 
-    // metodo para criar usuario master da empresa
+    /**
+     * @param $empresa
+     * @return $this|Model
+     *
+     * metodo para criar usuario master da empresa
+     */
     public static function geraUsuarioMaster($empresa){
 
         $user = [];
@@ -37,9 +42,12 @@ class Empresa extends Model
         $user['email'] = $empresa['email'];
         $user['password'] = bcrypt('secret');
         $user['remember_token'] = str_random(10);
-        $user['cia_secret'] = $empresa['key_secret'];
-        $user['nivel'] = \App\Model\User::NIVEL_ADMIN;
-        $user['status'] = \App\Model\User::STATUS_ATIVO;
+        $user['user_id'] = 0;
+        $user['user_id_alter'] = 0;
+        $user['empresa_id'] = $empresa['id'];
+        $user['tela_id'] = '0';
+        $user['origem_id'] = 0;
+        $user['origem_tela_id'] = '0';
 
         $novouser = \App\Model\User::create($user);
 
