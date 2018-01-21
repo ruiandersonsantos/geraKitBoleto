@@ -27,6 +27,7 @@ trait CrudControllerTrait
                         ->where('id',$id)
                         ->where('is_deletado', 0)
                         ->first();
+
         return response()->json($result);
     }
 
