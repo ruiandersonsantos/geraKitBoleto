@@ -8,7 +8,8 @@ trait CrudControllerTrait
 {
     public function index(Request $request){
 
-        $result = $this->model->all()->where('is_deletado', '=', 0);
+        $result = $this->model->all();
+            //->where('is_deletado', '=', 0);
         return response()->json($result);
     }
 

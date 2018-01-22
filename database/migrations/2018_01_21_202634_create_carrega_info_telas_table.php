@@ -27,7 +27,6 @@ class CreateCarregaInfoTelasTable extends Migration
 
         ]);
 
-
         $telacfop->save();
     }
 
