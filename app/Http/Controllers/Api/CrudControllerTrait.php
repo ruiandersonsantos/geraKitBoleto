@@ -41,9 +41,8 @@ trait CrudControllerTrait
     }
 
     public function destroy($id){
-        $result = $this->model->findOrFail($id);
-        $result['is_deletado'] = 1;
-        $result->update();
+        $modelo = $this->model->find($id);
+        $result = $modelo->delete();
         return response()->json($result);
     }
 
